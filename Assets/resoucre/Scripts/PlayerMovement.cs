@@ -4,22 +4,27 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 public class PlayerMovement : MonoBehaviour
 {
-    //物理组件
+    //运动组件
     Rigidbody2D rigibody2D;
     //x y 输入
     Vector2 moveInput;
-    //速度
-    public float moveSpeed;
-
+    //动画组件
     Animator animator;
-
+    //图片组件
     SpriteRenderer renderer;
+
+        //速度
+    public float moveSpeed;
 
     private void Awake(){
         //获取2
         rigibody2D=GetComponent<Rigidbody2D>();
         animator=GetComponent<Animator>();
         renderer=GetComponent<SpriteRenderer>();
+    }
+
+    private void OnFire(){
+        animator.SetTrigger("swordAttack");
     }
 
     private void OnMove(InputValue value){
@@ -30,8 +35,11 @@ public class PlayerMovement : MonoBehaviour
         }else{
             if(moveInput.x>0){
                 renderer.flipX=false;
+                gameObject.BroadcastMessage("IsFacingRight",true);
             }else{
                 renderer.flipX=true;
+                gameObject.BroadcastMessage("IsFacingRight",false);
+
             }
             animator.SetBool("isWalking",true);
         }
