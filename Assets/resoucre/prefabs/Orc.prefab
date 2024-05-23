@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 8096218418787221489}
   - component: {fileID: 7234301570029686537}
   - component: {fileID: 1126693467651015098}
+  - component: {fileID: 8684533384179361327}
   m_Layer: 0
   m_Name: Orc
   m_TagString: Untagged
@@ -147,7 +148,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: 5
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -160,7 +161,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!95 &8096218418787221489
 Animator:
   serializedVersion: 5
@@ -194,7 +195,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9d617a9110da3f4ea642338de50eeac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  viewRadius: 10
+  viewRadius: 6
   playerLayerMask:
     serializedVersion: 2
     m_Bits: 64
@@ -212,3 +213,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
+  attackPower: 0
+  konckbackForce: 0
+--- !u!114 &8684533384179361327
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 201892258781954075}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e58aaa34a5c0040459d1235a25c5b7fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 3
+  isDead: 0

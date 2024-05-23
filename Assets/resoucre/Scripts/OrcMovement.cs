@@ -16,8 +16,12 @@ public class OrcMove : MonoBehaviour
     DetetionZone detetionZone;
 
     //速度
-    public float speed;
+    public float speed;  
 
+    //攻击力
+    public int attackPower;
+    //弹开-力
+    public float konckbackForce;
     private void Awake(){
         //获取2
         rigibody2D=GetComponent<Rigidbody2D>();
@@ -27,12 +31,25 @@ public class OrcMove : MonoBehaviour
     }
 
 
+    public void onDamage(){
+        animator.SetTrigger("isDamage");
+    }
+
+    public void onDie(){
+        animator.SetTrigger("isDead");
+    }
+
+
     public void OnWalk(){
         animator.SetBool("isWalking",true);
     }
 
     public void OnWalkStop(){
         animator.SetBool("isWalking",false);
+    }
+
+    public void onDestory(){
+        Destroy(gameObject);
     }
 
     private void FixedUpdate(){

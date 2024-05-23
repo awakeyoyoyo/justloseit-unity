@@ -1,12 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
-public class PlayerSword : MonoBehaviour
+public class PlayerSowrd2 : MonoBehaviour
 {
-
-    //物理组件 移动
+  //物理组件 移动
     public BoxCollider2D collider2;
     //改变刀刚体的位置
     Vector3 position;
@@ -26,7 +24,7 @@ public class PlayerSword : MonoBehaviour
             transform.localPosition=position;
 
         }else{
-            transform.localPosition=new Vector3(-position.x-collider2.size.x ,position.y,position.z);
+            transform.localPosition=new Vector3(-position.x,position.y,position.z);
         }
     }
 
