@@ -213,8 +213,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
-  attackPower: 0
-  konckbackForce: 0
+  attackPower: 1
+  konckbackForce: 800
 --- !u!114 &8684533384179361327
 MonoBehaviour:
   m_ObjectHideFlags: 0

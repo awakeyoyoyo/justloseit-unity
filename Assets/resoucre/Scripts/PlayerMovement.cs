@@ -16,6 +16,8 @@ public class PlayerMovement : MonoBehaviour
         //速度
     public float moveSpeed;
 
+    public bool facingRightFlag=true;
+
     private void Awake(){
         //获取2
         rigibody2D=GetComponent<Rigidbody2D>();
@@ -35,9 +37,11 @@ public class PlayerMovement : MonoBehaviour
         }else{
             if(moveInput.x>0){
                 renderer.flipX=false;
+                facingRightFlag=true;
                 gameObject.BroadcastMessage("IsFacingRight",true);
             }else{
                 renderer.flipX=true;
+                facingRightFlag=false;
                 gameObject.BroadcastMessage("IsFacingRight",false);
 
             }
@@ -51,15 +55,20 @@ public class PlayerMovement : MonoBehaviour
     }
 
 
-    // Start is called before the first frame update
-    void Start()
+    public void onDamage()
     {
-        
+        animator.SetTrigger("isDamage");
     }
 
-    // Update is called once per frame
-    void Update()
+    public void onDie()
     {
-        
+        animator.SetTrigger("isDie");
     }
+
+    public void onDestory()
+    {
+        Destroy(gameObject);
+    }
+
+
 }

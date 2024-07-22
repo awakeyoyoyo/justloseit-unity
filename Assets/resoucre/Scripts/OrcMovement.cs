@@ -1,7 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
-using UnityEngine.InputSystem;
 public class OrcMove : MonoBehaviour
 {
    //物理组件 移动
@@ -68,4 +66,19 @@ public class OrcMove : MonoBehaviour
             OnWalkStop();
         }
     }
+
+private void OnCollisionEnter2D(Collision2D collision) {
+    
+    Console.WriteLine("enter2d");
+    Collider2D collider2D = collision.collider;
+    IDamage damage = collider2D.GetComponent<IDamage>();
+    if (damage != null && collider2D.tag == "Player")
+    {
+        Vector2 dirction = collider2D.transform.position - transform.position;
+        Vector2 force = dirction.normalized * konckbackForce;
+        damage.OnAttack(attackPower, force);
+    }
+    
+}
+
 }

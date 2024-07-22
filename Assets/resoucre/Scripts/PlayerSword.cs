@@ -8,6 +8,8 @@ public class PlayerSword : MonoBehaviour
 
     //物理组件 移动
     public BoxCollider2D collider2;
+    //父 物理组件 移动
+    public BoxCollider2D paramCollider2;
     //改变刀刚体的位置
     Vector3 position;
     //攻击力
@@ -19,14 +21,19 @@ public class PlayerSword : MonoBehaviour
         collider2=GetComponent<BoxCollider2D>();
         //相对于父节点的位置
         position=transform.localPosition;
+        paramCollider2= GetComponentInParent<BoxCollider2D>();
     }
 
-    void IsFacingRight(bool isFacingRight){
-        if(isFacingRight){
-            transform.localPosition=position;
+    void IsFacingRight(bool isFacingRight)
+    {
+        if (isFacingRight)
+        {
+            transform.localPosition = position;
 
-        }else{
-            transform.localPosition=new Vector3(-position.x-collider2.size.x ,position.y,position.z);
+        }
+        else
+        {
+            transform.localPosition = new Vector3(-position.x - collider2.size.x- paramCollider2.size.x, position.y, position.z);
         }
     }
 
